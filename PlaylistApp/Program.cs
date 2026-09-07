@@ -31,6 +31,7 @@ while (running)
         case "8": AddSongToPlaylist();  break;
         case "9": RemoveSongFromPlaylist(); break;
         case "10": ShufflePlaylist();   break;
+        case "12": SortPlaylistByDuration(); break;
 
         // ── Statistiques / Quitter ──────────────────────────────────────────
         case "11": library.DisplayStats(); break;
@@ -84,8 +85,11 @@ void ShowMainMenu()
     Console.WriteLine("   8. Ajouter une chanson à une playlist");
     Console.WriteLine("   9. Retirer une chanson d'une playlist");
     Console.WriteLine("  10. Mélanger une playlist (shuffle)");
+    Console.WriteLine("  11. Trier une playlist par durée");
+
     Console.WriteLine("\n  📊 Autre");
-    Console.WriteLine("  11. Statistiques");
+
+    Console.WriteLine("  12. Statistiques");
     Console.WriteLine("   0. Quitter");
     Console.Write("\n▶  Votre choix : ");
 }
@@ -197,5 +201,16 @@ void ShufflePlaylist()
     if (pl is null) { Console.WriteLine("  ❌  Playlist introuvable."); return; }
     pl.Melanger();
     Console.WriteLine($"  ✅  Playlist « {pl.Nom} » mélangée !");
+    pl.Display();
+}
+
+void SortPlaylistByDuration()
+{
+    Console.Write("\n⏳ ID de la playlist à trier par durée : ");
+    if (!int.TryParse(Console.ReadLine(), out int id)) { Console.WriteLine("ID invalide."); return; }
+    var pl = library.GetPlaylist(id);
+    if (pl is null) { Console.WriteLine("  ❌  Playlist introuvable."); return; }
+    pl.TrierParDuree();
+    Console.WriteLine($"  ✅  Playlist « {pl.Nom} » triée du plus court au plus long !");
     pl.Display();
 }
