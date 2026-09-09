@@ -82,6 +82,7 @@ public class Playlist
     /// <summary>
     /// Trie la liste des chansons de la plus courte à la plus longue.
     /// </summary>
+    /// 
     public void TrierParDuree()
     {
         _chansons.Sort((a, b) => a.DureeSecondes.CompareTo(b.DureeSecondes));

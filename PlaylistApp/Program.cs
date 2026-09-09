@@ -31,10 +31,11 @@ while (running)
         case "8": AddSongToPlaylist();  break;
         case "9": RemoveSongFromPlaylist(); break;
         case "10": ShufflePlaylist();   break;
-        case "12": SortPlaylistByDuration(); break;
+        
 
         // ── Statistiques / Quitter ──────────────────────────────────────────
-        case "11": library.DisplayStats(); break;
+        case "12": library.DisplayStats(); break;
+        case "13": SortPlaylistByDuration(); break;
         case "0":
             Console.WriteLine("\n👋  À bientôt !\n");
             running = false;
@@ -85,11 +86,12 @@ void ShowMainMenu()
     Console.WriteLine("   8. Ajouter une chanson à une playlist");
     Console.WriteLine("   9. Retirer une chanson d'une playlist");
     Console.WriteLine("  10. Mélanger une playlist (shuffle)");
-    Console.WriteLine("  11. Trier une playlist par durée");
+    
 
     Console.WriteLine("\n  📊 Autre");
 
     Console.WriteLine("  12. Statistiques");
+    Console.WriteLine("  13. Trier une playlist par durée (shuffle)");
     Console.WriteLine("   0. Quitter");
     Console.Write("\n▶  Votre choix : ");
 }
@@ -106,7 +108,7 @@ void ListAllSongs()
 
 void SearchSongs()
 {
-    Console.Write("\n🔍 Terme de recherche (titre / artiste / album) : ");
+    Console.Write("\n🔍 Terme de recherche (titre / artiste / album / genre) : ");
     string query = Console.ReadLine() ?? "";
     var results = library.SearchSongs(query).ToList();
     Console.WriteLine($"\n  {results.Count} résultat(s) pour « {query} » :");
