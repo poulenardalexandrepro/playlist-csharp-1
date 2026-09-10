@@ -63,7 +63,7 @@ void ShowWelcome()
     Console.Clear();
     Console.ForegroundColor = ConsoleColor.Cyan;
     Console.WriteLine("╔══════════════════════════════════════════════╗");
-    Console.WriteLine("║        🎵  PlaylistApp  🎵                  ║");
+    Console.WriteLine("║        🎵  PlaylistApp  🎵                   ║");
     Console.WriteLine("║   Gestion de playlists musicales en C#       ║");
     Console.WriteLine("╚══════════════════════════════════════════════╝");
     Console.ResetColor();
